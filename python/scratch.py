@@ -32,7 +32,7 @@ def brain_luck(code: str, input: str):
         command = code[code_pointer]
         if command == ">":
             data_pointer += 1
-        elif command == ">":
+        elif command == "<":
             data_pointer -= 1
         elif command == "+":
             data[data_pointer] = correct_data(data.get(data_pointer, 0) + 1)
@@ -58,6 +58,7 @@ class PowerTest(TestCase):
         self.assertEqual(brain_luck(',+[-.,+]', 'Codewars' + chr(255)), 'Codewars')
         self.assertEqual(brain_luck(',[.[-],]', 'Codewars' + chr(0)), 'Codewars')
         self.assertEqual(brain_luck(',>,<[>[->+>+<<]>>[-<<+>>]<<<-]>>.', chr(8) + chr(9)), chr(72))
+        self.assertEqual(brain_luck('+[-[<<[+[--->]-[<<<]]]>>>-]>-.---.>..>.<<<<-.<+.>>>>>.>.<<.<-.', ""), "hello world")
         self.assertEqual(get_matching_bracket(',>,<[>[->+>+<<]>>[-<<+>>]<<<-]>>.', 4), 29)
         self.assertEqual(get_matching_bracket(',>,<[>[->+>+<<]>>[-<<+>>]<<<-]>>.', 29), 4)
         self.assertEqual(get_matching_bracket(',>,<[>[->+>+<<]>>[-<<+>>]<<<-]>>.', 6), 14)
